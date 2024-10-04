@@ -13,12 +13,12 @@ const Login = () => {
 
     if (code) {
       // 인가코드가 있으면 백엔드로 콜백 요청
-      axios.get(`http://localhost:8080/api/auth/oauth/kakao/callback?code=${code}`)
+      axios.get(`http://43.202.56.105:8080/api/auth/oauth/kakao/callback?code=${code}`)
         .then((response) => {
           // 로그인 성공 후 처리 (예: 토큰 저장 및 리다이렉션)
-          const { accessToken, refreshToken, isSinitto, email, redirectUrl } = response.data;
+          const { accessToken, refreshToken, isSinitto, email, redirectUrl, isMember } = response.data;
           
-          if (accessToken && refreshToken) {
+          if (isMember) {
             // 토큰을 로컬 스토리지에 저장
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('refreshToken', refreshToken);
@@ -42,7 +42,7 @@ const Login = () => {
 
   const handleLogin = () => {
     // 카카오 로그인 요청을 백엔드로 보내기
-    window.location.href = 'http://localhost:8080/api/auth/oauth/kakao';
+    window.location.href = 'http://43.202.56.105:8080/api/auth/oauth/kakao';
   };
 
   return (
