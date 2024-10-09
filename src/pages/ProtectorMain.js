@@ -14,7 +14,16 @@ const ProtectorMain = () => {
     } catch (error) {
       console.error('카카오 로그아웃 실패:', error);
     }
-
+    try {
+      await axios.delete('http://localhost:8080/api/members/logout', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      });
+      console.log('백엔드 로그아웃 성공');
+    } catch (error) {
+      console.error('백엔드 로그아웃 실패:', error);
+    }
     // 로컬 스토리지에서 토큰 및 이메일 삭제
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
