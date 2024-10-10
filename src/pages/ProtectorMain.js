@@ -15,7 +15,7 @@ const ProtectorMain = () => {
       console.error('카카오 로그아웃 실패:', error);
     }
     try {
-      await axios.delete('http://localhost:8080/api/members/logout', {
+      await axios.delete('http://3.34.144.219:8080/api/members/logout', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

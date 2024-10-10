@@ -13,7 +13,7 @@ const Signup = () => {
     const email = localStorage.getItem('email'); // 로컬 스토리지에 저장된 이메일 가져오기
 
     try {
-      const response = await axios.post('http://localhost:8080/api/members/sinitto', {
+      const response = await axios.post('http://3.34.144.219:8080/api/members/sinitto', {
         name,
         phoneNumber,
         email,
