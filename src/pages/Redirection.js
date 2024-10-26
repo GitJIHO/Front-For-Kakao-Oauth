@@ -12,7 +12,7 @@ const Redirection = () => {
 
     if (code) {
       // 인가코드가 있으면 백엔드로 콜백 요청
-      axios.get(`http://3.34.144.219:8080/api/auth/oauth/kakao/callback?code=${code}`)
+      axios.get(`http://sinitto.site:8080/api/auth/oauth/kakao/callback?code=${code}`)
         .then((response) => {
           // 로그인 성공 후 처리
           const { accessToken, refreshToken, isSinitto, email, redirectUrl, isMember } = response.data;
