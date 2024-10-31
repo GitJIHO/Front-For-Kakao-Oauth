@@ -14,8 +14,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/redirection" element={<Redirection />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/sinitto-main" element={<SinittoMain />} />
-        <Route path="/protector-main" element={<ProtectorMain />} />
+        <Route path="/sinitto" element={<SinittoMain />} />
+        <Route path="/guard" element={<ProtectorMain />} />
       </Routes>
     </Router>
   );

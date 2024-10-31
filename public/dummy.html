@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT Callback</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>JWT Callback</h1>
+  <p id="tokenDisplay">유저 정보를 기다리고 있습니다...</p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const accessToken = params.get('accessToken');
+    const refreshToken = params.get('refreshToken');
+    const isSinitto = params.get('isSinitto');
+
+    const tokenDisplay = document.getElementById('tokenDisplay');
+
+    if (accessToken && refreshToken && isSinitto) {
+      // 로컬 스토리지에 토큰 저장
+      console.log('Received tokens:', accessToken, refreshToken, isSinitto);
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+      localStorage.setItem('isSinitto', isSinitto);
+
+      tokenDisplay.textContent = '더미데이터 로그인이 완료되었습니다. 잠시만 기다려주세요';
+
+      // isSinitto에 따라 리다이렉트 경로 결정
+      setTimeout(() => {
+        window.location.href = (isSinitto === 'true') ? '/sinitto' : '/guard';
+      }, 2000);
+    } else {
+      console.error('Access or Refresh token not found in query parameters.');
+      tokenDisplay.textContent = 'JWT를 찾을 수 없습니다.';
+    }
+  </script>
+</body>
+</html>

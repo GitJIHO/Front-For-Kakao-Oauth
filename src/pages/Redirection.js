@@ -23,9 +23,9 @@ const Redirection = () => {
             localStorage.setItem('refreshToken', refreshToken);
             // isSinitto에 따라 리다이렉션
             if (isSinitto) {
-              navigate('/sinitto-main');
+              navigate('/sinitto');
             } else {
-              navigate('/protector-main');
+              navigate('/guard');
             }
           } else {
             // 이메일을 로컬 스토리지에 저장하고 redirectUrl로 리다이렉션
